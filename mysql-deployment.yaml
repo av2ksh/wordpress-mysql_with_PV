@@ -45,7 +45,7 @@ spec:
         tier: mysql
     spec:
       containers:
-      - image: mysql:8.0.32
+      - image: mysql:5.7.41
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
@@ -53,6 +53,9 @@ spec:
             secretKeyRef:
               name: mysql-pass
               key: password
+        - name: MYSQL_DATABASE
+          value: wordpress_db
+#        args: ["--default-authentication-plugin=mysql_native_password"]
         ports:
         - containerPort: 3306
           name: mysql
